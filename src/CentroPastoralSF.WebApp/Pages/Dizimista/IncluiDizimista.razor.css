@@ -1,0 +1,53 @@
+﻿::deep .linha {
+    padding-top: 10px;
+}
+
+::deep .rz-textbox {
+    width: 100%;
+}
+
+::deep .rz-datepicker {
+    width: 100%;
+}
+
+::deep .sessao-botoes-acoes {
+    padding-top: 20px;
+}
+
+::deep .rz-form-field {
+    width: 100%;
+}
+
+
+    ::deep .rz-form-field:not(.rz-floating-label) .rz-form-field-label, .rz-textbox:not(:placeholder-shown) ~ .rz-form-field-label {
+        background-color: var(--rz-base-100)
+    }
+
+::deep .rz-button {
+    border-radius: var(--rz-border-radius-6);
+}
+
+    ::deep .rz-button.rz-variant-outlined.rz-primary:not(.rz-state-disabled):hover:not(:active),
+    .rz-button.rz-variant-outlined.rz-primary:not(.rz-state-disabled):focus-visible:not(:active),
+    .rz-button.rz-variant-outlined.rz-primary:not(.rz-state-disabled):active {
+        background-color: var(--rz-primary);
+        color: var(--rz-white);
+        background-image: none;
+    }
+
+    ::deep .rz-button.rz-variant-outlined.rz-secondary {
+        border: var(--rz-border-base-700);
+        color: var(--rz-baze-700);
+    }
+
+        ::deep .rz-button.rz-variant-outlined.rz-secondary.rz-shade-default {
+            box-shadow: inset 0 0 0 var(--rz-border-width) var(--rz-baze-700);
+        }
+
+        ::deep .rz-button.rz-variant-outlined.rz-secondary:not(.rz-state-disabled):hover:not(:active),
+        .rz-button.rz-variant-outlined.rz-secondary:not(.rz-state-disabled):focus-visible:not(:active),
+        .rz-button.rz-variant-outlined.rz-secondary:not(.rz-state-disabled):active {
+            background-color: var(--rz-base-700);
+            color: var(--rz-white);
+            background-image: none;
+        }

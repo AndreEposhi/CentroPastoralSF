@@ -1,0 +1,12 @@
+﻿::deep .botoes-acoes {
+    margin-bottom: 20px;
+    width: 8rem;
+}
+
+::deep .rz-button.rz-primary.rz-shade-default {
+    background-color: var(--rz-base-500);
+}
+
+::deep .rz-data-grid {
+    height: calc(100vh - 15rem);
+}

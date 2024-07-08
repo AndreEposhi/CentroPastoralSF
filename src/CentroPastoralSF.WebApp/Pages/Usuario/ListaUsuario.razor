@@ -1,0 +1,25 @@
+﻿@page "/lista-usuario"
+@using CentroPastoralSF.Core.Responses.Usuario
+
+<div>
+    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center">
+        <RadzenText Text="Usuários" TextStyle="TextStyle.H6" />
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Horizontal">
+        <RadzenButton Text="Excluir" Click="@Excluir" class="botoes-acoes" />
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Horizontal">
+        <RadzenDataGrid IsLoading=@isLoading Count="@count" Data="@usuarios" TItem="BuscaTodosUsuariosResponse" LoadData="@BuscarUsuarios" AllowSorting="true"
+                        AllowPaging="true" PageSize="4" PagerHorizontalAlign="HorizontalAlign.Center" AllowFiltering="true" FilterMode="FilterMode.Simple"
+                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" SelectionMode="DataGridSelectionMode.Single" @bind-Value="@usuariosSelecionados"
+                        RowClick="@SelecionarUsuario" ShowPagingSummary="true" PagingSummaryFormat="@TextoPaginacao">
+            <Columns>
+                <RadzenDataGridColumn Property="Id" Title="Id" Width="80px" />
+                <RadzenDataGridColumn Property="Nome" Title="Nome" Width="160px" />
+                <RadzenDataGridColumn Property="Sobrenome" Title="Sobrenome" Width="160px" />
+                <RadzenDataGridColumn Property="Login" Title="Login" Width="160px" />
+            </Columns>
+        </RadzenDataGrid>
+    </RadzenStack>
+</div>
+

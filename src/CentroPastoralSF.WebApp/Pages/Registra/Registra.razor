@@ -1,0 +1,63 @@
+﻿@page "/registra"
+@using CentroPastoralSF.Core.Requests.Usuario
+
+<div>
+    <RadzenCard Class="rz-my-12 rz-mx-auto" Style="max-width: 450px">
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center">
+            <RadzenText Text="Registrar" TextStyle="TextStyle.DisplayH6"  />
+        </RadzenStack>
+        <RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Normal">
+            <RadzenTemplateForm TItem="RegistraUsuarioRequest" Data="@usuario" Submit="@Registrar">
+                <RadzenRow>
+                    <RadzenColumn Size="12">
+                        <RadzenFormField Text="Nome" AllowFloatingLabel="false" >
+                            <ChildContent>
+                                <RadzenTextBox @bind-Value="@usuario.Nome"  Name="Nome"/>
+                            </ChildContent>
+                            <Helper>
+                                <RadzenLengthValidator Min="3" Text="Nome deve ter no mínimo 3 caracteres." Component="Nome"/>
+                            </Helper>
+                        </RadzenFormField>
+                    </RadzenColumn>
+                    <RadzenColumn Size="12">
+                        <RadzenFormField Text="Sobrenome" AllowFloatingLabel="false" >
+                            <ChildContent>
+                                <RadzenTextBox @bind-Value="@usuario.Sobrenome"  Name="Sobrenome" />
+                            </ChildContent>
+                            <Helper>
+                                <RadzenLengthValidator Min="3" Text="Sobrenome deve ter no mínimo 3 caracteres." Component="Sobrenome"/>
+                            </Helper>
+                        </RadzenFormField>
+                    </RadzenColumn>
+                    <RadzenColumn Size="12">
+                        <RadzenFormField Text="Email" AllowFloatingLabel="false" >
+                            <ChildContent>
+                                <RadzenTextBox @bind-Value="@usuario.Login"  Name="Email" />
+                            </ChildContent>
+                            <Helper>
+                                <RadzenRequiredValidator Text="Email é obrigatório." Component="Email"/>
+                                <RadzenEmailValidator Text="Email inválido." Component="Email" />
+                            </Helper>
+                        </RadzenFormField>
+                    </RadzenColumn>
+                    <RadzenColumn Size="12">
+                        <RadzenFormField Text="Senha" AllowFloatingLabel="false" >
+                            <ChildContent>
+                                <RadzenPassword @bind-Value="@usuario.Senha"  Name="Senha"/>
+                            </ChildContent>
+                            <Helper>
+                                <RadzenLengthValidator Min="3" Text="Senha deve ter no mínimo 3 caracteres." Component="Senha" />
+                            </Helper>
+                        </RadzenFormField>
+                    </RadzenColumn>
+                </RadzenRow>
+                <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" class="sessao-botoes-acoes">
+                    <RadzenButton Text="Cancelar" ButtonStyle="ButtonStyle.Secondary" Variant="Variant.Outlined" Click="@Cancelar" />
+                    <RadzenButton Text="Registrar" ButtonStyle="ButtonStyle.Primary" Variant="Variant.Outlined"
+                                  ButtonType="ButtonType.Submit" />
+                </RadzenStack>
+            </RadzenTemplateForm>
+        </RadzenStack>
+    </RadzenCard>
+</div>
+

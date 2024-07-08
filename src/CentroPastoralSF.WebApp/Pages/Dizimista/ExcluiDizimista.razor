@@ -1,0 +1,14 @@
+﻿<div>
+    <RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Normal">
+        <RadzenStack>
+            <RadzenText Text="Deseja realmente excluir o registro?" TextStyle="TextStyle.Body1"/>
+        </RadzenStack>
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" class="sessao-botoes-acoes">
+            <RadzenButton Text="Cancelar" ButtonStyle="ButtonStyle.Secondary" Variant="Variant.Outlined"
+                          Click="@Cancelar" />
+            <RadzenButton Text="Confirmar" ButtonStyle="ButtonStyle.Primary" Variant="Variant.Outlined"
+                          Click="@Confirmar" />
+        </RadzenStack>
+    </RadzenStack>
+</div>
+

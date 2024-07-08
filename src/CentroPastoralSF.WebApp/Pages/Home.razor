@@ -1,0 +1,43 @@
+﻿@page "/home"
+@page "/home/{Email}/{Nome}"
+@using CentroPastoralSF.WebApp.Pages.Dizimista
+@using CentroPastoralSF.WebApp.Pages.Usuario
+
+<div>
+    <RadzenLayout>
+        <RadzenHeader>
+            <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.SpaceBetween">
+                <RadzenStack Orientation="Orientation.Vertical" Gap="0">
+                    <RadzenSidebarToggle Click="@(() => sidebarExpanded = !sidebarExpanded)" />
+                </RadzenStack>
+                <RadzenStack Orientation="Orientation.Vertical" Gap="0">
+                    <RadzenMenu>
+                        <RadzenMenuItem Text="@Nome" Icon="person">
+                            <RadzenMenuItem Text="Perfil" Icon="account_circle" Click="@IrPerfil" />
+                            <RadzenMenuItem Text="Sair" Icon="logout" Click="@Sair" />
+                        </RadzenMenuItem>
+                    </RadzenMenu>
+                </RadzenStack>
+            </RadzenStack>
+        </RadzenHeader>
+        <RadzenSidebar Responsive="false" Style="width: max-content">
+            <RadzenPanelMenu DisplayStyle="@(sidebarExpanded ? MenuItemDisplayStyle.IconAndText : MenuItemDisplayStyle.Icon)" ShowArrow="false">
+                <RadzenPanelMenuItem Text="Dizimista" Icon="person" Click="@(args => Listar(TipoCadastro.Dizimista))" />
+                <RadzenPanelMenuItem Text="Usuário" Icon="person" Click="@(args => Listar(TipoCadastro.Usuario))" />
+            </RadzenPanelMenu>
+        </RadzenSidebar>
+        <RadzenBody>
+            <div class="rz-p-4">
+                @if (listaDizimista)
+                {
+                    <ListaDizimista></ListaDizimista>
+                }
+                else if (listaUsuario)
+                {
+                    <ListaUsuario></ListaUsuario>
+                }
+            </div>
+        </RadzenBody>
+    </RadzenLayout>
+</div>
+

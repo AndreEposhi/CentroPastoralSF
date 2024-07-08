@@ -1,0 +1,86 @@
+﻿
+<div>
+    <RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Normal">
+        <RadzenRow>
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenFormField Text="Nome" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenTextBox @bind-Value="@dizimista.Nome" MaxLength="100" Name="Nome" Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenFormField Text="Sobrenome" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenTextBox @bind-Value="@dizimista.Sobrenome" MaxLength="100" Name="Sobrenome" Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="2">
+                <RadzenFormField Text="DDD" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenTextBox @bind-Value="@dizimista.Ddd" MaxLength="2" Name="Ddd" Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="2">
+                <RadzenFormField Text="Telefone" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenMask Mask="*****-****" CharacterPattern="[0-9]" @bind-Value="@dizimista.Telefone" Name="Telefone"
+                                Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Normal">
+        <RadzenRow Style="padding-top: 10px;">
+            <RadzenColumn Size="12" SizeMD="2">
+                <RadzenFormField Text="CEP" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenMask Mask="*****-***" CharacterPattern="[0-9]" @bind-Value="@dizimista.Cep"
+                                Name="Cep" Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenFormField Text="Logradouro" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenTextBox @bind-Value="@dizimista.Logradouro" Name="Logradouro" Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="2">
+                <RadzenFormField Text="Número" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenTextBox @bind-Value="@dizimista.Numero" Name="Numero" Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenFormField Text="Complemento" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenTextBox @bind-Value="@dizimista.Complemento" Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Normal">
+        <RadzenRow Style="padding-top: 10px;">
+            <RadzenColumn Size="12" SizeMD="5">
+                <RadzenFormField Text="Bairro" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenTextBox @bind-Value="@dizimista.Bairro" Name="Bairro" Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="5">
+                <RadzenFormField Text="Município" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenTextBox @bind-Value="@dizimista.Municipio" Name="Municipio" Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="2">
+                <RadzenFormField Text="UF" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenTextBox @bind-Value="@dizimista.UF" MaxLength="2" Name="UF" Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+        </RadzenRow>
+        <RadzenRow Style="padding-top: 10px;">
+            <RadzenColumn Size="12" SizeMD="8">
+                <RadzenFormField Text="Email" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenTextBox @bind-Value="@dizimista.Email" Name="Email" Style="width: 100%" ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenFormField Text="Data de Nascimento" AllowFloatingLabel="false" Style="width: 100%">
+                    <RadzenDatePicker @bind-Value="@dizimista.DataNascimento" DateFormat="d" Name="DataNascimento" Style="width: 100%"
+                                      ReadOnly="true" />
+                </RadzenFormField>
+            </RadzenColumn>
+        </RadzenRow>
+    </RadzenStack>
+</div>
+

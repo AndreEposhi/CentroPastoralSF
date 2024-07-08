@@ -1,0 +1,147 @@
+﻿@using CentroPastoralSF.Core.Requests.Dizimista
+@using CentroPastoralSF.Core.Responses.Dizimista
+
+<div>
+    <RadzenTemplateForm TItem="IncluiDizimistaRequest" Data="@dizimista" Submit="@Confirmar">
+        <RadzenRow>
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenFormField Text="Nome" AllowFloatingLabel="false" >
+                    <ChildContent>
+                        <RadzenTextBox @bind-Value="@dizimista.Nome" MaxLength="100" Name="Nome" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenLengthValidator Component="Nome" Min="3" Text="Nome deve ter no mínimo 3 caracteres." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenFormField Text="Sobrenome" AllowFloatingLabel="false">
+                    <ChildContent>
+                        <RadzenTextBox @bind-Value="@dizimista.Sobrenome" MaxLength="100" Name="Sobrenome" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenLengthValidator Component="Sobrenome" Min="3" Text="Sobrenome deve ter no mínimo 3 caracteres." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="2">
+                <RadzenFormField Text="DDD" AllowFloatingLabel="false">
+                    <ChildContent>
+                        <RadzenTextBox @bind-Value="@dizimista.Ddd" MaxLength="2" Name="Ddd" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenLengthValidator Component="Ddd" Min="2" Text="DDD deve ter 2 caracteres." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="2">
+                <RadzenFormField Text="Telefone" AllowFloatingLabel="false">
+                    <ChildContent>
+                        <RadzenMask Mask="*****-****" CharacterPattern="[0-9]" @bind-Value="@dizimista.Telefone" Name="Telefone" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenRequiredValidator Component="Telefone" Text="Telefone é obrigatório." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+        </RadzenRow>
+        <RadzenRow class="linha">
+            <RadzenColumn Size="12" SizeMD="2">
+                <RadzenFormField Text="CEP" AllowFloatingLabel="false">
+                    <ChildContent>
+                        <RadzenMask Mask="*****-***" CharacterPattern="[0-9]" @bind-Value="@dizimista.Cep" Change="@BuscarCep"
+                                    Name="Cep" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenLengthValidator Component="Cep" Min="8" Text="Cep deve ter no mínimo 8 caracteres." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenFormField Text="Logradouro" AllowFloatingLabel="false">
+                    <ChildContent>
+                        <RadzenTextBox @bind-Value="@dizimista.Logradouro" Name="Logradouro" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenRequiredValidator Component="Logradouro" Text="Logradouro é obrigatório." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="2">
+                <RadzenFormField Text="Número" AllowFloatingLabel="false">
+                    <ChildContent>
+                        <RadzenTextBox @bind-Value="@dizimista.Numero" Name="Numero" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenRequiredValidator Component="Numero" Text="Número é obrigatório." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenFormField Text="Complemento" AllowFloatingLabel="false">
+                    <RadzenTextBox @bind-Value="@dizimista.Complemento" />
+                </RadzenFormField>
+            </RadzenColumn>
+        </RadzenRow>
+        <RadzenRow class="linha">
+            <RadzenColumn Size="12" SizeMD="5">
+                <RadzenFormField Text="Bairro" AllowFloatingLabel="false">
+                    <ChildContent>
+                        <RadzenTextBox @bind-Value="@dizimista.Bairro" Name="Bairro" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenRequiredValidator Component="Bairro" Text="Bairro é obrigatório." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="5">
+                <RadzenFormField Text="Município" AllowFloatingLabel="false">
+                    <ChildContent>
+                        <RadzenTextBox @bind-Value="@dizimista.Municipio" Name="Municipio" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenRequiredValidator Component="Municipio" Text="Município é obrigatório." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="2">
+                <RadzenFormField Text="UF" AllowFloatingLabel="false">
+                    <ChildContent>
+                        <RadzenTextBox @bind-Value="@dizimista.UF" MaxLength="2" Name="UF" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenRequiredValidator Component="UF" Text="UF é obrigatório." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+        </RadzenRow>
+        <RadzenRow class="linha">
+            <RadzenColumn Size="12" SizeMD="8">
+                <RadzenFormField Text="Email" AllowFloatingLabel="false">
+                    <ChildContent>
+                        <RadzenTextBox @bind-Value="@dizimista.Email" Name="Email" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenRequiredValidator Component="Email" Text="Email é obrigatório." />
+                        <RadzenEmailValidator Component="Email" Text="Email inválido." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+            <RadzenColumn Size="12" SizeMD="4">
+                <RadzenFormField Text="Data de Nascimento" AllowFloatingLabel="false">
+                    <ChildContent>
+                        <RadzenDatePicker @bind-Value="@dizimista.DataNascimento" DateFormat="d" Name="DataNascimento" />
+                    </ChildContent>
+                    <Helper>
+                        <RadzenRequiredValidator Component="DataNascimento" Text="Data de nascimento é obrigatório." />
+                    </Helper>
+                </RadzenFormField>
+            </RadzenColumn>
+        </RadzenRow>
+        <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End" class="sessao-botoes-acoes">
+            <RadzenButton Text="Cancelar" ButtonStyle="ButtonStyle.Secondary" Variant="Variant.Outlined"
+                          Click="@Cancelar" />
+            <RadzenButton Text="Confirmar" ButtonType="ButtonType.Submit" ButtonStyle="ButtonStyle.Primary" Variant="Variant.Outlined" />
+        </RadzenStack>
+    </RadzenTemplateForm>
+</div>

@@ -1,0 +1,33 @@
+﻿@page "/lista-dizimista"
+@using CentroPastoralSF.Core.Responses.Dizimista
+
+<div>
+    <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Center">
+        <RadzenText Text="Dizimistas" TextStyle="TextStyle.H6" />
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Horizontal">
+        <RadzenButton Text="Incluir" Click="@Incluir" class="botoes-acoes" />
+        <RadzenButton Text="Editar" Click="@Editar" class="botoes-acoes" />
+        <RadzenButton Text="Excluir" Click="@Excluir" class="botoes-acoes" />
+    </RadzenStack>
+    <RadzenStack Orientation="Orientation.Horizontal">
+        <RadzenDataGrid IsLoading=@isLoading Count="@count" Data="@dizimistas" TItem="BuscaTodosDizimistasResponse" LoadData="@BuscarDizimistas" AllowSorting="true"
+                        AllowPaging="true" PageSize="5" PagerHorizontalAlign="HorizontalAlign.Right" AllowFiltering="true" FilterMode="FilterMode.Simple"
+                        FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" SelectionMode="DataGridSelectionMode.Single" @bind-Value="@dizimistasSelecionados"
+                        RowClick="@SelecionarDizimista" ShowPagingSummary="true" PagingSummaryFormat="@TextoPaginacao" RowDoubleClick="@MostrarDetalhe" >
+            <Columns>
+                <RadzenDataGridColumn Property="Id" Title="Id" Width="80px" />
+                <RadzenDataGridColumn Property="Nome" Title="Nome" Width="160px" />
+                <RadzenDataGridColumn Property="Sobrenome" Title="Sobrenome" Width="160px" />
+                <RadzenDataGridColumn Property="Ddd" Title="DDD" Width="80px" />
+                <RadzenDataGridColumn Property="Telefone" Title="Telefone" Width="100px">
+                    <Template Context="data">
+                        @string.Format("{0:#####-####}", Convert.ToInt64(data.Telefone))
+                    </Template>
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn Property="Email" Title="Email" Width="160px" />
+            </Columns>
+        </RadzenDataGrid>
+    </RadzenStack>
+</div>
+
