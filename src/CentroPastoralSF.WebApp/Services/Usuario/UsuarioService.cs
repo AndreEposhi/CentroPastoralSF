@@ -36,7 +36,8 @@ namespace CentroPastoralSF.WebApp.Services.Usuario
         public async Task<Response<LoginUsuarioResponse>> Logar(LoginUsuarioRequest request)
         {
             //Todo: criptografar a senha
-            var usuario = await client.GetAsync($"v1/usuario/{request.Email}/{request.Senha}");
+            //request.Senha = "1234";
+            var usuario = await client.PostAsJsonAsync($"v1/usuario/login", request);
 
             return await usuario.Content.ReadFromJsonAsync<Response<LoginUsuarioResponse>>();
         }

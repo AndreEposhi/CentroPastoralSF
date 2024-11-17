@@ -11,7 +11,7 @@ namespace CentroPastoralSF.Api.Endpoints.Usuario
         public static void Map(IEndpointRouteBuilder app)
         {
             app.MapDelete("/{id}", Handler)
-                .WithName("Usuário: Excluir")
+                .WithName("ExcluiUsuario")
                 .WithSummary("Exclui um usuário")
                 .WithDescription("Exclui um usuário")
                 .WithOrder(5)

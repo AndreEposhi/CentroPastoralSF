@@ -8,5 +8,6 @@
         Task Alterar(Usuario usuario);
         Task Remover(Usuario usuario);
         Task<Usuario?> BuscarPorId(int id);
+        Task<Usuario> ValidarLogin(Usuario usuario, string email, string senha);
     }
 }

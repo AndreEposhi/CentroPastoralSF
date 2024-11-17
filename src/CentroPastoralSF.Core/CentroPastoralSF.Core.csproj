@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Responses\Usuario\BuscarUsuarioPorEmailResponse.cs~RF20a1b7a2.TMP" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="8.0.5" />
+    <PackageReference Include="Microsoft.JSInterop" Version="8.0.5" />
   </ItemGroup>
 
 </Project>

@@ -12,7 +12,7 @@ namespace CentroPastoralSF.Api.Endpoints.Usuario
         public static void Map(IEndpointRouteBuilder app)
         {
             app.MapPut("/", Handler)
-                .WithName("Usuário: Atualizar")
+                .WithName("PerfilUsuario")
                 .WithSummary("Atualiza o perfil do usuário.")
                 .WithDescription("Atualiza o perfil do usuário.")
                 .WithOrder(4)

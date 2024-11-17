@@ -12,7 +12,7 @@ namespace CentroPastoralSF.Api.Endpoints.Usuario
         public static void Map(IEndpointRouteBuilder app)
         {
             app.MapPost("/", Handler)
-                .WithName("Usuário: Registrar")
+                .WithName("RegistraUsuario")
                 .WithSummary("Registra um novo usuário")
                 .WithDescription("Registra um novo usuário")
                 .WithOrder(1)

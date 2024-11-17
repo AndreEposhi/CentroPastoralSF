@@ -1,6 +1,9 @@
-﻿namespace CentroPastoralSF.Domain.Usuario
+﻿using CentroPastoralSF.Core.Configurations;
+using CentroPastoralSF.Core.Services;
+
+namespace CentroPastoralSF.Domain.Usuario
 {
-    public class UsuarioService(IUsuarioRepository usuarioRepository) : IUsuarioService
+    public class UsuarioService(IUsuarioRepository usuarioRepository, CryptoService cryptoService) : IUsuarioService
     {
         public async Task<Usuario> Adicionar(Usuario usuario)
         {
@@ -30,6 +33,16 @@
         public async Task Remover(Usuario usuario)
         {
             await usuarioRepository.Remover(usuario);
+        }
+
+        public async Task<Usuario> ValidarLogin(Usuario usuario, string email, string senha)
+        {
+            var senhaDescriptografada = await cryptoService.DecryptText(senha, ApplicationConfiguration.EncryptorKey,
+                ApplicationConfiguration.EncryptorIV);
+
+            usuario.ValidarLogin(email, senhaDescriptografada);
+
+            return usuario;
         }
     }
 }

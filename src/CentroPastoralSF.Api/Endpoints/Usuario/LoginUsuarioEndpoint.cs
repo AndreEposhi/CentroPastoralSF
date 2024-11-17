@@ -1,5 +1,7 @@
 ﻿using CentroPastoralSF.Api.Application.Usuario;
 using CentroPastoralSF.Api.Configurations;
+using CentroPastoralSF.Api.Converters;
+using CentroPastoralSF.Core.Requests.Usuario;
 using CentroPastoralSF.Core.Responses;
 using CentroPastoralSF.Core.Responses.Usuario;
 using MediatR;
@@ -10,17 +12,17 @@ namespace CentroPastoralSF.Api.Endpoints.Usuario
     {
         public static void Map(IEndpointRouteBuilder app)
         {
-            app.MapGet("/{email}/{senha}", Handler)
-                .WithName("Usuário: Login")
+            app.MapPost("/login", Handler)
+                .WithName("LoginUsuario")
                 .WithSummary("Login do usuário")
                 .WithDescription("Login do usuário")
                 .WithOrder(3)
                 .Produces<Response<LoginUsuarioResponse>>();
         }
 
-        public static async Task<IResult> Handler(IMediator mediator, string email, string senha)
+        public static async Task<IResult> Handler(IMediator mediator, LoginUsuarioRequest request)
         {
-            var usuario = await mediator.Send(new LoginUsuarioQuery(email, senha));
+            var usuario = await mediator.Send(request.ToLoginUsuarioQuery());
 
             return usuario.ToResult();
         }

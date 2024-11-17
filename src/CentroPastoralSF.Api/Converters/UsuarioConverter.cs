@@ -15,5 +15,10 @@ namespace CentroPastoralSF.Api.Converters
             return new PerfilUsuarioCommand(request.Id, request.Nome, request.Sobrenome, 
                 request.Login, request.Senha);
         }
+
+        public static LoginUsuarioQuery ToLoginUsuarioQuery(this LoginUsuarioRequest request)
+        {
+            return new LoginUsuarioQuery(request.Email, request.Senha);
+        }
     }
 }

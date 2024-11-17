@@ -10,7 +10,6 @@ builder.AddDocumentation();
 builder.AddServices();
 builder.AddMediator();
 builder.AddEncryptorConfiguration();
-builder.AddSubtleCryptoConfiguration();
 
 var app = builder.Build();
 

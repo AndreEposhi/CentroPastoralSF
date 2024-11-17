@@ -18,7 +18,6 @@ namespace CentroPastoralSF.WebApp.Pages.Dizimista
         IList<BuscaTodosDizimistasResponse> dizimistasSelecionados = null!;
 
         bool isLoading = false;
-        bool? reload = false;
 
         int count = 0;
         protected override void OnInitialized()

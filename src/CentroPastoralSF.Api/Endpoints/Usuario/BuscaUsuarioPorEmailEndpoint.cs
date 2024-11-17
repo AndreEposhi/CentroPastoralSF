@@ -11,7 +11,7 @@ namespace CentroPastoralSF.Api.Endpoints.Usuario
         public static void Map(IEndpointRouteBuilder app)
         {
             app.MapGet("/{email}", Handler)
-                .WithName("Usuário: BuscarEmail")
+                .WithName("BuscaUsuarioPorEmail")
                 .WithSummary("Buscar usuário pelo e-mail")
                 .WithDescription("Buscar usuário pelo e-mail")
                 .WithOrder(6)

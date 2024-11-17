@@ -1,11 +1,12 @@
-﻿using Blazor.SubtleCrypto;
-using CentroPastoralSF.Api.Application.Services.Cep;
+﻿using CentroPastoralSF.Api.Application.Services.Cep;
+using CentroPastoralSF.Core.Services;
 using CentroPastoralSF.Domain.Dizimista;
 using CentroPastoralSF.Domain.Usuario;
 using CentroPastoralSF.Infraestructure.Data;
 using CentroPastoralSF.Infraestructure.Data.Dizimista;
 using CentroPastoralSF.Infraestructure.Data.Usuario;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.JSInterop;
 using System.Reflection;
 
 namespace CentroPastoralSF.Api.Configurations
@@ -58,6 +59,7 @@ namespace CentroPastoralSF.Api.Configurations
             builder.Services.AddTransient<IUsuarioService, UsuarioService>();
             builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
             builder.Services.AddTransient<ICepService, CepService>();
+            builder.Services.AddSingleton(service => new CryptoService(service.GetService<IJSRuntime>()));
         }
 
         public static void AddMediator(this WebApplicationBuilder builder)
@@ -81,15 +83,6 @@ namespace CentroPastoralSF.Api.Configurations
         {
             ApiConfiguration.AlgorithmKey = builder.Configuration.GetValue<string>("AlgorithmKey") ?? string.Empty;
             ApiConfiguration.AlgorithmIV = builder.Configuration.GetValue<string>("AlgorithmIV") ?? string.Empty;
-        }
-
-        public static void AddSubtleCryptoConfiguration(this WebApplicationBuilder builder)
-        {
-            builder.Services.AddSubtleCrypto(opt =>
-                opt.Key = "ELE9xOyAyJHCsIPLMbbZHQ7pVy7WUlvZ60y5WkKDGMSw5xh5IM54kUPlycKmHF9VGtYUilglL8iePLwr" //Use another key
-            );
-
-            //builder.Services.AddTransient<ICryptoService, CryptoService>();
         }
     }
 }
