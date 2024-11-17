@@ -23,7 +23,8 @@ namespace CentroPastoralSF.Infraestructure.Data.Usuario
 
         public async Task<UsuarioDomain?> BuscarPorEmail(string email)
         {
-            return await context.Usuarios.FirstOrDefaultAsync(u => u.Login.Endereco == email);
+            return await context.Usuarios.AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Login.Endereco == email);
         }
 
         public async Task<UsuarioDomain?> BuscarPorId(int id)
@@ -34,6 +35,7 @@ namespace CentroPastoralSF.Infraestructure.Data.Usuario
         public async Task<IQueryable<UsuarioDomain?>> BuscarTodos()
         {
             return await Task.Run(() => context.Usuarios
+                .AsNoTracking()
                 .OrderBy(u => u.Nome.Nome)
                 .ThenBy(u => u.Id)
                 .AsQueryable());
@@ -44,6 +46,12 @@ namespace CentroPastoralSF.Infraestructure.Data.Usuario
             context.Remove(usuario);
 
             await context.SaveChangesAsync();
+        }
+
+        public async Task<bool> VerificarSeJaExiste(string email)
+        {
+            return await context.Usuarios.AsNoTracking()
+                .CountAsync(u => u.Login.Endereco == email) > 0;
         }
     }
 }

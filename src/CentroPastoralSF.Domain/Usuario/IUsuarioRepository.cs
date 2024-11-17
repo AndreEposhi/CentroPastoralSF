@@ -8,5 +8,6 @@
         Task Atualizar(Usuario usuario);
         Task Remover(Usuario usuario);
         Task<Usuario?> BuscarPorId(int id);
+        Task<bool> VerificarSeJaExiste(string email);
     }
 }

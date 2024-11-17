@@ -29,10 +29,11 @@ namespace CentroPastoralSF.Api.Application.Usuario
                 var nome = new Nomeacao(command.Nome, command.Sobrenome);
                 var login = new Email(command.Login);
 
-                usuario.Atualizar(nome, login, command.Senha);
+                //usuario.Atualizar(nome, login, command.Senha);
+
+                await usuarioService.Alterar(usuario, nome, login, command.Senha);
 
                 var validacoesCampos = usuario.Validacao.Erros.Where(u => u.TipoValidacao == Domain.TipoValidacao.Campo);
-                var validacoesNegocios = usuario.Validacao.Erros.Where(u => u.TipoValidacao == Domain.TipoValidacao.Negocio);
 
                 if (validacoesCampos.Any())
                 {
@@ -44,6 +45,8 @@ namespace CentroPastoralSF.Api.Application.Usuario
                     return usuario.ToPerfilUsuarioResponse(HttpStatusCode.BadRequest, false, errors: erros);
                 }
 
+                var validacoesNegocios = usuario.Validacao.Erros.Where(u => u.TipoValidacao == Domain.TipoValidacao.Negocio);
+
                 if (validacoesNegocios.Any())
                 {
                     foreach (var erro in validacoesNegocios)
@@ -53,8 +56,6 @@ namespace CentroPastoralSF.Api.Application.Usuario
 
                     return usuario.ToPerfilUsuarioResponse(HttpStatusCode.UnprocessableEntity, false, errors: erros);
                 }
-
-                await usuarioService.Alterar(usuario);
 
                 return usuario.ToPerfilUsuarioResponse(HttpStatusCode.OK, true);
             }

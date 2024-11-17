@@ -18,7 +18,7 @@ namespace CentroPastoralSF.Domain.Usuario
         public Nomeacao Nome { get; private set; } = null!;
         public Email Login { get; private set; } = null!;
         public string Senha { get; private set; } = null!;
-        public Validacao Validacao { get; private set; } = null!;
+        public Validacao Validacao { get; private set; } = new Validacao();
 
         public void Atualizar(Nomeacao nome, Email login, string senha)
         {
@@ -31,7 +31,7 @@ namespace CentroPastoralSF.Domain.Usuario
 
         public void ValidarLogin(string email, string senha)
         {
-            Validacao = new Validacao();
+            //Validacao = new Validacao();
 
             if (Login.Endereco != email || Senha != senha)
             {
@@ -40,7 +40,7 @@ namespace CentroPastoralSF.Domain.Usuario
         }
         private void Validar(Nomeacao nome, Email login, string senha)
         {
-            Validacao = new Validacao();
+            //Validacao = new Validacao();
 
             if (!nome.Validacao.EValido)
             {

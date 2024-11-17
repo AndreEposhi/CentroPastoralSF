@@ -40,47 +40,7 @@ namespace CentroPastoralSF.Core.Services
             ApplicationConfiguration.EncryptorIV = iv;
         }
 
-        //public string GenerateKey()
-        //{
-        //    var rng = new RNGCryptoServiceProvider();
-        //    byte[] key = new byte[32]; // 256 bits = 32 bytes
-        //    rng.GetBytes(key);
-
-        //    return Convert.ToBase64String(key);
-        //}
-
-        //public string GenerateIV()
-        //{
-        //    var rng = new RNGCryptoServiceProvider();
-        //    byte[] iv = new byte[16]; // 128 bits = 16 bytes
-        //    rng.GetBytes(iv);
-
-        //    return Convert.ToBase64String(iv);
-        //}
-
-
-        //public async Task<string> EncryptText(string plainText, string key, string iv)
-        //{
-
-        //    byte[] keyBytes = Convert.FromBase64String(key);
-        //    byte[] ivBytes = Convert.FromBase64String(iv);
-
-        //    ArraySegment<byte> keySegment = new ArraySegment<byte>(keyBytes);
-        //    ArraySegment<byte> ivSegment = new ArraySegment<byte>(ivBytes);
-
-        //    var jsResult = await jsRuntime.InvokeAsync<string>(
-        //        "encryptText",
-        //        plainText,
-        //        keySegment,
-        //        ivSegment
-        //    );
-
-        //    return jsResult;
-
-        //    // Send the encrypted text to the Web API
-        //}
-
-        public async Task<string> DecryptText(string plainText, string key, string iv)
+        public string DecryptText(string plainText, string key, string iv)
         {
             int NonceSize = 12; // AES-GCM nonce size in bytes
             int TagSize = 16;   // AES-GCM tag size in bytes

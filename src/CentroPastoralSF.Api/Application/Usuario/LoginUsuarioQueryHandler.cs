@@ -1,15 +1,13 @@
 ﻿using CentroPastoralSF.Api.Application.Converters;
 using CentroPastoralSF.Core.Responses;
 using CentroPastoralSF.Core.Responses.Usuario;
-using CentroPastoralSF.Core.Services;
 using CentroPastoralSF.Domain.Usuario;
 using MediatR;
 using System.Net;
 
 namespace CentroPastoralSF.Api.Application.Usuario
 {
-    public class LoginUsuarioQueryHandler(IUsuarioService usuarioService, CryptoService cryptoService1) :
-        IRequestHandler<LoginUsuarioQuery, Response<LoginUsuarioResponse>>
+    public class LoginUsuarioQueryHandler(IUsuarioService usuarioService) : IRequestHandler<LoginUsuarioQuery, Response<LoginUsuarioResponse>>
     {
         public async Task<Response<LoginUsuarioResponse>> Handle(LoginUsuarioQuery query, CancellationToken cancellationToken)
         {
@@ -26,7 +24,7 @@ namespace CentroPastoralSF.Api.Application.Usuario
                     return new Response<LoginUsuarioResponse>(HttpStatusCode.NotFound, false, errors: erros);
                 }
 
-                usuario = await usuarioService.ValidarLogin(usuario, query.Email, query.Senha);
+                usuario = usuarioService.ValidarLogin(usuario, query.Email, query.Senha);
 
                 if (!usuario.Validacao.EValido)
                 {

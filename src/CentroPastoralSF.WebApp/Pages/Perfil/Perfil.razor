@@ -9,12 +9,12 @@
                 <RadzenText Text="Perfil" TextStyle="TextStyle.DisplayH6" />
             </RadzenStack>
             <RadzenStack Orientation="Orientation.Vertical" JustifyContent="JustifyContent.Normal">
-                <RadzenTemplateForm TItem="PerfilUsuarioRequest" Data="@usuario" Submit="@Confirmar">
+                <RadzenTemplateForm TItem="PerfilUsuarioRequest" Data="@perfilUsuario" Submit="@Confirmar">
                     <RadzenRow>
                         <RadzenColumn Size="12">
                             <RadzenFormField Text="Nome" AllowFloatingLabel="false" >
                                 <ChildContent>
-                                    <RadzenTextBox @bind-Value="@usuario.Nome"  Name="Nome" />
+                                    <RadzenTextBox @bind-Value="@perfilUsuario.Nome"  Name="Nome" />
                                 </ChildContent>
                                 <Helper>
                                     <RadzenLengthValidator Min="3" Text="Nome deve ter no mínimo 3 caracteres." Component="Nome" />
@@ -24,7 +24,7 @@
                         <RadzenColumn Size="12">
                             <RadzenFormField Text="Sobrenome" AllowFloatingLabel="false" >
                                 <ChildContent>
-                                    <RadzenTextBox @bind-Value="@usuario.Sobrenome"  Name="Sobrenome" />
+                                    <RadzenTextBox @bind-Value="@perfilUsuario.Sobrenome"  Name="Sobrenome" />
                                 </ChildContent>
                                 <Helper>
                                     <RadzenLengthValidator Min="3" Text="Sobrenome deve ter no mínimo 3 caracteres." Component="Sobrenome" />
@@ -34,7 +34,7 @@
                         <RadzenColumn Size="12">
                             <RadzenFormField Text="Email" AllowFloatingLabel="false" >
                                 <ChildContent>
-                                    <RadzenTextBox @bind-Value="@usuario.Login"  Name="Email" />
+                                    <RadzenTextBox @bind-Value="@perfilUsuario.Login"  Name="Email" />
                                 </ChildContent>
                                 <Helper>
                                     <RadzenRequiredValidator Text="Email é obrigatório." Component="Email" />
@@ -45,7 +45,7 @@
                         <RadzenColumn Size="12">
                             <RadzenFormField Text="Senha" AllowFloatingLabel="false" >
                                 <ChildContent>
-                                    <RadzenPassword @bind-Value="@usuario.Senha"  Name="Senha" />
+                                    <RadzenPassword @bind-Value="@perfilUsuario.Senha"  Name="Senha" />
                                 </ChildContent>
                                 <Helper>
                                     <RadzenLengthValidator Min="3" Text="Senha deve ter no mínimo 3 caracteres." Component="Senha" />

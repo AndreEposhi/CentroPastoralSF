@@ -1,4 +1,5 @@
 ﻿using CentroPastoralSF.Core.Requests.Usuario;
+using CentroPastoralSF.Core.Services;
 using CentroPastoralSF.WebApp.Services.Usuario;
 using Microsoft.AspNetCore.Components;
 using Radzen;
@@ -12,6 +13,7 @@ namespace CentroPastoralSF.WebApp.Pages.Registra
         [Inject] UsuarioService UsuarioService { get; set; } = null!;
         [Inject] NavigationManager Navigation { get; set; } = null!;
         [Inject] NotificationService Notification { get; set; } = null!;
+        [Inject] CryptoService CryptoService { get; set; } = null!;
 
         protected override void OnInitialized()
         {
@@ -22,13 +24,19 @@ namespace CentroPastoralSF.WebApp.Pages.Registra
 
         private async Task Registrar()
         {
+            var senhaDigitada = usuario.Senha;
+
             try
             {
+                usuario.Senha = await CryptoService.Encrypt(usuario.Senha);
+
                 var registraUsuarioResponse = await UsuarioService.Registrar(usuario);
 
-                if (registraUsuarioResponse is not null && !registraUsuarioResponse.Success)
+                if (registraUsuarioResponse != null && !registraUsuarioResponse.Success)
                 {
                     var mensagemErro = string.Join("<br/>", registraUsuarioResponse.Errors);
+
+                    usuario.Senha = senhaDigitada;
 
                     ExibirMensagem(NotificationSeverity.Error, mensagemErro);
 
@@ -36,9 +44,13 @@ namespace CentroPastoralSF.WebApp.Pages.Registra
                 }
 
                 ExibirMensagem(NotificationSeverity.Success, "Usuário registrado com sucesso.");
+
+                Cancelar();
             }
             catch (Exception ex)
             {
+                usuario.Senha = senhaDigitada;
+
                 ExibirMensagem(NotificationSeverity.Error, ex.Message);
             }
         }

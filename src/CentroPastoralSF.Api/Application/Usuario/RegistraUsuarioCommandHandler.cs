@@ -18,7 +18,6 @@ namespace CentroPastoralSF.Api.Application.Usuario
                 var usuario = command.ToUsuario();
 
                 var validacaoCampos = usuario.Validacao.Erros.Where(e => e.TipoValidacao == Domain.TipoValidacao.Campo);
-                var validacaoNegocios = usuario.Validacao.Erros.Where(e => e.TipoValidacao == Domain.TipoValidacao.Negocio);
 
                 if (validacaoCampos.Any())
                 {
@@ -30,6 +29,10 @@ namespace CentroPastoralSF.Api.Application.Usuario
                     return usuario.ToRegistraUsuarioResponse(HttpStatusCode.BadRequest, false, erros);
                 }
 
+                usuario = await usuarioService.Adicionar(usuario);
+
+                var validacaoNegocios = usuario.Validacao.Erros.Where(e => e.TipoValidacao == Domain.TipoValidacao.Negocio);
+
                 if (validacaoNegocios.Any())
                 {
                     foreach (var erro in validacaoNegocios)
@@ -39,8 +42,6 @@ namespace CentroPastoralSF.Api.Application.Usuario
 
                     return usuario.ToRegistraUsuarioResponse(HttpStatusCode.UnprocessableEntity, false, erros);
                 }
-
-                usuario = await usuarioService.Adicionar(usuario);
 
                 return usuario.ToRegistraUsuarioResponse(HttpStatusCode.Created, true);
             }
