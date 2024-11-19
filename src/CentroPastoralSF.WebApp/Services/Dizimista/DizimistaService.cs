@@ -44,5 +44,19 @@ namespace CentroPastoralSF.WebApp.Services.Dizimista
 
             return await dizimista.Content.ReadFromJsonAsync<Response<ExcluiDizimistaResponse>>();
         }
+
+        public async Task<Response<BuscaTotalDizimistasResponse>> BuscarTotal()
+        {
+            try
+            {
+                var dizimistas = await client.GetAsync("v1/dizimista");
+
+                return await dizimistas.Content.ReadFromJsonAsync<Response<BuscaTotalDizimistasResponse>>();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

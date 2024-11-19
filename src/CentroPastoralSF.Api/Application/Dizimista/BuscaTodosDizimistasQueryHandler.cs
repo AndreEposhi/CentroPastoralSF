@@ -7,10 +7,10 @@ using System.Net;
 
 namespace CentroPastoralSF.Api.Application.Dizimista
 {
-    public class BuscarTodosDizimistasQueryHandler(IDizimistaService dizimistaService)
-        : IRequestHandler<BuscarTodosDizimistasQuery, Response<IEnumerable<BuscaTodosDizimistasResponse>>>
+    public class BuscaTodosDizimistasQueryHandler(IDizimistaService dizimistaService)
+        : IRequestHandler<BuscaTodosDizimistasQuery, Response<IEnumerable<BuscaTodosDizimistasResponse>>>
     {
-        public async Task<Response<IEnumerable<BuscaTodosDizimistasResponse>>> Handle(BuscarTodosDizimistasQuery query, CancellationToken cancellationToken)
+        public async Task<Response<IEnumerable<BuscaTodosDizimistasResponse>>> Handle(BuscaTodosDizimistasQuery query, CancellationToken cancellationToken)
         {
             var erros = new List<string>();
 

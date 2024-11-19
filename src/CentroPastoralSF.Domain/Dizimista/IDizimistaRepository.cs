@@ -7,5 +7,6 @@
         Task<Dizimista> Adicionar(Dizimista dizimista);
         Task Atualizar(Dizimista dizimista);
         Task Remover(Dizimista dizimista);
+        Task<int> BuscarTotal();
     }
 }

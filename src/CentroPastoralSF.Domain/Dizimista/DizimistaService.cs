@@ -17,6 +17,11 @@
             return await dizimistaRepository.BuscarTodos();
         }
 
+        public async Task<int> BuscarTotal()
+        {
+            return await dizimistaRepository.BuscarTotal();
+        }
+
         public async Task<Dizimista> Incluir(Dizimista dizimista)
         {
             //Todo: Se tiver outras regras de negócio, validar aqui!

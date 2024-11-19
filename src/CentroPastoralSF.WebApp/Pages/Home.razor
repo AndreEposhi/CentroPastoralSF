@@ -36,6 +36,15 @@
                 {
                     <ListaUsuario></ListaUsuario>
                 }
+
+                <div class="rz-p-0 rz-p-md-12">
+                    <RadzenChart>
+                        <RadzenColumnSeries Data="@totalDizimistas" CategoryProperty="Dizimista" ValueProperty="Quantidade" Title="Dizimistas"
+                                            LineType="LineType.Dashed" />
+                        <RadzenValueAxis Min="0" Max="50" Step="10" />
+                    </RadzenChart>
+                </div>
+
             </div>
         </RadzenBody>
     </RadzenLayout>

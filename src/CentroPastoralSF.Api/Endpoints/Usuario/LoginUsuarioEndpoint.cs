@@ -1,5 +1,4 @@
-﻿using CentroPastoralSF.Api.Application.Usuario;
-using CentroPastoralSF.Api.Configurations;
+﻿using CentroPastoralSF.Api.Configurations;
 using CentroPastoralSF.Api.Converters;
 using CentroPastoralSF.Core.Requests.Usuario;
 using CentroPastoralSF.Core.Responses;

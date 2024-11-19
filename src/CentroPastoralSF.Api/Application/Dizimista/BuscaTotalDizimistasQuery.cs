@@ -4,5 +4,5 @@ using MediatR;
 
 namespace CentroPastoralSF.Api.Application.Dizimista
 {
-    public record BuscarTodosDizimistasQuery : IRequest<Response<IEnumerable<BuscaTodosDizimistasResponse>>>; 
+    public record BuscaTotalDizimistasQuery : IRequest<Response<BuscaTotalDizimistasResponse>>;
 }

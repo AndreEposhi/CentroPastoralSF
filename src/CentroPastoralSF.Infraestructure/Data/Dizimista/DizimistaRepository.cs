@@ -34,6 +34,11 @@ namespace CentroPastoralSF.Infraestructure.Data.Dizimista
                 .ThenBy(d => d.Id));
         }
 
+        public async Task<int> BuscarTotal()
+        {
+            return await context.Dizimistas.AsNoTracking().CountAsync();
+        }
+
         public async Task Remover(DizimistaDomain dizimista)
         {
             context.Remove(dizimista);

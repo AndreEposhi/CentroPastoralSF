@@ -7,5 +7,6 @@
         Task<IQueryable<Dizimista?>> BuscarTodos();
         Task<Dizimista?> BuscarPorId(int id);
         Task Remover(Dizimista dizimista);
+        Task<int> BuscarTotal();
     }
 }

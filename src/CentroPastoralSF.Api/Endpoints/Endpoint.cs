@@ -16,7 +16,8 @@ namespace CentroPastoralSF.Api.Endpoints
                 .MapEndpoint<BuscaTodosDizimistasEndpoint>()
                 .MapEndpoint<AlteraDizimistaEndpoint>()
                 .MapEndpoint<BuscaDizimistaPorIdEndpoint>()
-                .MapEndpoint<ExcluiDizimistaEndpoint>();
+                .MapEndpoint<ExcluiDizimistaEndpoint>()
+                .MapEndpoint<BuscaTotalDizimistasEndpoint>();
 
             endpoints.MapGroup("v1/usuario")
                 .WithTags("Usuário")
